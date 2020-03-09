@@ -2,7 +2,10 @@
   <section>
     <no-ssr>
       <div class="donut-content">
-        <div class="margin-donut" v-for="item in sections" v-bind:key="item.title">
+        <div
+          class="margin-donut"
+          v-for="item in sections"
+          v-bind:key="item.title">
           <vc-donut
             :size="150" unit="px" :thickness="10"
             :sections="item.section" :total="100">
@@ -15,9 +18,21 @@
           </vc-donut>
 
           <div class="text-percent">
-            <div v-for="(titles, index) in item.section" v-bind:key="index">
-              <p class="title-text" v-bind:style="{ color: titles.color }">{{ titles.label }}</p>
-              <p class="percent-content">{{ titles.value }}% <span>{{ titles.money }}€</span></p>
+            <div
+              class="margin-index"
+              v-for="(titles, index) in item.section"
+              v-bind:key="index">
+              <div class="center-content">
+                <p
+                  class="title-text"
+                  v-bind:style="{ color: titles.color }">
+                  {{ titles.label }}
+                </p>
+                <p class="percent-content">
+                  {{ titles.value }}%
+                  <span>{{ titles.money }}€</span>
+                </p>
+              </div>
             </div>
           </div>
           <hr />
@@ -52,17 +67,23 @@ export default {
     margin-right: 50px;
   }
 
+  .margin-index {
+    margin: 0 10px 0 10px;
+  }
+
   .donut-content {
     display: flex;
     margin: auto;
   }
+
   .donut-content .text-percent {
-    display: flex;
     margin-top: 10px;
+    display: flex;
   }
 
-  .donut-content .text-percent div {
-    margin-right: 30px;
+  .donut-content .text-percent div .center-content {
+    display: block;
+    margin: auto;
   }
   .donut-content .text-percent div .title-text {
     font-weight: bold;
